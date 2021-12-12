@@ -79,10 +79,18 @@ export default {
     ...mapActions(['login']),
 
     loginUser() {
-      this.$v.$touch()
       // login user action
       this.login({ email: this.email, password: this.password })
     },
+  },
+  updated() {
+    if (this.user.token) {
+      this.$router.push({ name: 'Home' }).catch((error) => {
+        if (error.name != 'NavigationDuplicated') {
+          throw error
+        }
+      })
+    }
   },
 }
 </script>
