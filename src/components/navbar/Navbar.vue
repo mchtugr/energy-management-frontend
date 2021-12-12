@@ -1,5 +1,11 @@
 <template>
-  <b-navbar toggleable="lg" variant="light" fixed="top" class="px-3">
+  <b-navbar
+    toggleable="lg"
+    variant="light"
+    fixed="top"
+    class="px-3"
+    v-if="showNavbar"
+  >
     <b-navbar-brand class="navbar__logo p-0">
       <router-link to="/">
         <img src="@/assets/faradai-logo.svg" alt="logo" />
@@ -40,6 +46,9 @@ export default {
   name: 'Navbar',
   computed: {
     ...mapState(['user']),
+    showNavbar() {
+      return this.$route.name !== 'Login'
+    },
   },
   mixins: [filters],
 }
