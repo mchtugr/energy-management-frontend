@@ -1,0 +1,17 @@
+.navbar {
+  color: red;
+
+  &__logo {
+    height: 35px;
+    width: 130px;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
