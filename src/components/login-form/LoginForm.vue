@@ -1,5 +1,5 @@
 <template>
-  <form class="login-form bg-light" @submit="loginUser">
+  <form class="login-form bg-light" @submit.prevent="loginUser">
     <h3 class="mb-3">Sign In</h3>
     <b-row>
       <b-form-group
@@ -18,7 +18,7 @@
         ></b-form-input>
       </b-form-group>
     </b-row>
-    <b-row class="mb-3">
+    <b-row>
       <b-form-group
         label="Password"
         label-for="password"
@@ -35,17 +35,22 @@
         ></b-form-input>
       </b-form-group>
     </b-row>
-    <div>
-      <b-button variant="primary" type="submit">Login</b-button>
+    <div v-if="user.error" class="text-danger m-2 text-start">
+      * {{ user.error }}
+    </div>
+    <div class="mt-3">
+      <b-button variant="outline-primary" type="submit">
+        {{ user.loading ? 'Logging in...' : 'Login' }}
+        <b-spinner small v-if="user.loading"></b-spinner>
+      </b-button>
     </div>
   </form>
 </template>
 
 <script>
-import validators from '../../mixins/validators'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'LoginForm',
-  mixins: [validators],
   data() {
     return {
       email: '',
@@ -53,6 +58,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     isValidEmail() {
       if (this.email === '') return null
       return this.email.includes('@')
@@ -70,11 +76,12 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['login']),
+
     loginUser() {
       this.$v.$touch()
-      if (!this.$v.user.$invalid) {
-        // login user action
-      }
+      // login user action
+      this.login({ email: this.email, password: this.password })
     },
   },
 }
