@@ -14,9 +14,9 @@ export default new Vuex.Store({
       error: null,
     },
     factories: {
-      loading: false,
-      error: null,
-      list: [],
+      get: { loading: false, error: null, list: [] },
+      edit: { loading: false, error: null },
+      delete: { loading: false, error: null },
     },
   },
   mutations: {
@@ -30,13 +30,30 @@ export default new Vuex.Store({
       state.user = { ...state.user, loading: false, error: payload }
     },
     FETCH_FACTORIES_LOADING(state) {
-      state.factories.loading = true
+      state.factories.get.loading = true
     },
     FETCH_FACTORIES_SUCCESS(state, payload) {
-      state.factories = { list: payload, loading: false, error: null }
+      state.factories.get = {
+        list: payload,
+        loading: false,
+        error: null,
+      }
     },
     FETCH_FACTORIES_ERROR(state, payload) {
-      state.factories = { ...state.factories, loading: false, error: payload }
+      state.factories.get = {
+        ...state.factories.get,
+        loading: false,
+        error: payload,
+      }
+    },
+    DELETE_FACTORY_LOADING(state) {
+      state.factories.delete.loading = true
+    },
+    DELETE_FACTORY_SUCCESS(state) {
+      state.factories.delete = { loading: false, error: null }
+    },
+    DELETE_FACTORY_ERROR(state, payload) {
+      state.factories.delete = { loading: false, error: payload }
     },
   },
   actions: {
@@ -69,6 +86,24 @@ export default new Vuex.Store({
         })
         .catch((err) =>
           context.commit('FETCH_FACTORIES_ERROR', err.response.data)
+        )
+    },
+
+    // remove selected factory
+    removeFactory(context, id) {
+      context.commit('DELETE_FACTORY_LOADING')
+
+      axios
+        .delete(`http://localhost:3000/api/factories/${id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(() => {
+          context.commit('DELETE_FACTORY_SUCCESS')
+        })
+        .catch((err) =>
+          context.commit('DELETE_FACTORY_ERROR', err.response.data)
         )
     },
   },
