@@ -74,6 +74,16 @@ export default new Vuex.Store({
     EDIT_FACTORY_ERROR(state, payload) {
       state.factories.edit = { loading: false, error: payload }
     },
+    ADD_FACTORY_LOADING(state) {
+      state.factories.new.loading = true
+    },
+    ADD_FACTORY_SUCCESS(state, paylaod) {
+      state.factories.list = [...state.factories.list, paylaod]
+      state.factories.new = { loading: false, error: null }
+    },
+    ADD_FACTORY_ERROR(state, payload) {
+      state.factories.new = { loading: false, error: payload }
+    },
   },
   actions: {
     // login user
@@ -144,6 +154,20 @@ export default new Vuex.Store({
           context.commit('EDIT_FACTORY_SUCCESS', factoryObj.id)
         })
         .catch((err) => context.commit('EDIT_FACTORY_ERROR', err.response.data))
+    },
+    addNewFactory(context, factoryObj) {
+      context.commit('ADD_FACTORY_LOADING')
+
+      axios
+        .post('http://localhost:3000/api/factories', factoryObj, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(() => {
+          context.commit('ADD_FACTORY_SUCCESS', factoryObj)
+        })
+        .catch((err) => context.commit('ADD_FACTORY_ERROR', err.response.data))
     },
   },
   modules: {},
