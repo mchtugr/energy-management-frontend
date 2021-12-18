@@ -14,9 +14,15 @@ export default new Vuex.Store({
       error: null,
     },
     factories: {
-      get: { loading: false, error: null, list: [] },
+      list: [],
+      get: { loading: false, error: null },
       edit: { loading: false, error: null },
       delete: { loading: false, error: null },
+      new: { loading: false, error: null },
+    },
+    units: {
+      list: [],
+      get: { loading: false, error: null },
     },
   },
   mutations: {
@@ -34,10 +40,10 @@ export default new Vuex.Store({
     },
     FETCH_FACTORIES_SUCCESS(state, payload) {
       state.factories.get = {
-        list: payload,
         loading: false,
         error: null,
       }
+      state.factories.list = payload
     },
     FETCH_FACTORIES_ERROR(state, payload) {
       state.factories.get = {
@@ -49,11 +55,24 @@ export default new Vuex.Store({
     DELETE_FACTORY_LOADING(state) {
       state.factories.delete.loading = true
     },
-    DELETE_FACTORY_SUCCESS(state) {
+    DELETE_FACTORY_SUCCESS(state, payload) {
+      // remove target factory from state
+      state.factories.list = state.factories.list.filter(
+        (i) => i.id !== payload
+      )
       state.factories.delete = { loading: false, error: null }
     },
     DELETE_FACTORY_ERROR(state, payload) {
       state.factories.delete = { loading: false, error: payload }
+    },
+    EDIT_FACTORY_LOADING(state) {
+      state.factories.edit.loading = true
+    },
+    EDIT_FACTORY_SUCCESS(state) {
+      state.factories.edit = { loading: false, error: null }
+    },
+    EDIT_FACTORY_ERROR(state, payload) {
+      state.factories.edit = { loading: false, error: payload }
     },
   },
   actions: {
@@ -100,11 +119,31 @@ export default new Vuex.Store({
           },
         })
         .then(() => {
-          context.commit('DELETE_FACTORY_SUCCESS')
+          context.commit('DELETE_FACTORY_SUCCESS', id)
         })
         .catch((err) =>
           context.commit('DELETE_FACTORY_ERROR', err.response.data)
         )
+    },
+
+    // edit factory
+    editFactory(context, factoryObj) {
+      context.commit('EDIT_FACTORY_LOADING')
+
+      axios
+        .patch(
+          `http://localhost:3000/api/factories/${factoryObj.id}`,
+          factoryObj,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then(() => {
+          context.commit('EDIT_FACTORY_SUCCESS', factoryObj.id)
+        })
+        .catch((err) => context.commit('EDIT_FACTORY_ERROR', err.response.data))
     },
   },
   modules: {},
