@@ -13,6 +13,11 @@ export default new Vuex.Store({
       token: null,
       error: null,
     },
+    signup: {
+      loading: false,
+      error: null,
+      success: null,
+    },
     factories: {
       list: [],
       get: { loading: false, error: null },
@@ -37,6 +42,17 @@ export default new Vuex.Store({
     },
     LOGIN_USER_ERROR(state, payload) {
       state.user = { ...state.user, loading: false, error: payload }
+    },
+
+    // SIGNUP
+    SIGNUP_USER_LOADING(state) {
+      state.signup.loading = true
+    },
+    SIGNUP_USER_SUCCESS(state) {
+      state.signup = { loading: false, error: null, success: true }
+    },
+    SIGNUP_USER_ERROR(state, payload) {
+      state.signup = { loading: false, error: payload }
     },
 
     // FETCH ALL FACTORIES
@@ -165,6 +181,21 @@ export default new Vuex.Store({
           context.commit('LOGIN_USER_SUCCESS', res.data)
         })
         .catch((err) => context.commit('LOGIN_USER_ERROR', err.response.data))
+    },
+
+    // signup user
+    register(context, userObj) {
+      context.commit('SIGNUP_USER_LOADING')
+      axios
+        .post('http://localhost:3000/api/users', userObj, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((res) => {
+          context.commit('SIGNUP_USER_SUCCESS', res.data)
+        })
+        .catch((err) => context.commit('SIGNUP_USER_ERROR', err.response.data))
     },
 
     // fetch all factories
