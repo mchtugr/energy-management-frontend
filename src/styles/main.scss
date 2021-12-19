@@ -1,1 +1,21 @@
 @import './variables';
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+.app-wrapper {
+  margin-top: 56px;
+}
+.nav-link {
+  color: #0000008c !important;
+}
+
+.nav-link.active {
+  color: #000 !important;
+}
