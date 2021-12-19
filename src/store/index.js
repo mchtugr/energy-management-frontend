@@ -113,6 +113,15 @@ export default new Vuex.Store({
     DELETE_UNIT_ERROR(state, payload) {
       state.factories.delete = { loading: false, error: payload }
     },
+    EDIT_UNIT_LOADING(state) {
+      state.units.edit.loading = true
+    },
+    EDIT_UNIT_SUCCESS(state) {
+      state.units.edit = { loading: false, error: null }
+    },
+    EDIT_UNIT_ERROR(state, payload) {
+      state.units.edit = { loading: false, error: payload }
+    },
   },
   actions: {
     // login user
@@ -229,6 +238,25 @@ export default new Vuex.Store({
           context.commit('DELETE_UNIT_SUCCESS', unit_id)
         })
         .catch((err) => context.commit('DELETE_UNIT_ERROR', err.response.data))
+    },
+    // edit factory
+    editUnit(context, unitObj) {
+      context.commit('EDIT_FACTORY_LOADING')
+
+      axios
+        .patch(
+          `http://localhost:3000/api/factories/${unitObj.factory_id}/units/${unitObj.id}`,
+          unitObj,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then(() => {
+          context.commit('EDIT_FACTORY_SUCCESS', unitObj.id)
+        })
+        .catch((err) => context.commit('EDIT_FACTORY_ERROR', err.response.data))
     },
   },
   modules: {},
