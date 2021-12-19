@@ -12,7 +12,7 @@
           <b-form-group label="Company name:" label-for="company" class="mb-2">
             <b-form-input
               type="text"
-              v-model="form.name"
+              v-model="formObj.name"
               placeholder="Enter Company Name"
               required
             ></b-form-input>
@@ -28,7 +28,7 @@
               id="company-size"
               type="number"
               placeholder="Enter Company Size"
-              v-model="form.company_size"
+              v-model="formObj.company_size"
               required
             ></b-form-input>
           </b-form-group>
@@ -38,12 +38,12 @@
       <b-row>
         <b-col>
           <b-form-group class="mb-2" label="Membership Date">
-            <b-form-datepicker v-model="form.membership_date" required />
+            <b-form-datepicker v-model="formObj.membership_date" required />
           </b-form-group>
         </b-col>
         <b-col>
           <b-form-group class="mb-2" label="Membership Due">
-            <b-form-datepicker v-model="form.membership_due" required />
+            <b-form-datepicker v-model="formObj.membership_due" required />
           </b-form-group>
         </b-col>
       </b-row>
@@ -51,7 +51,7 @@
       <!-- CheckBox -->
       <b-form-checkbox
         name="gold-member"
-        v-model="form.gold_member"
+        v-model="formObj.gold_member"
         class="mb-2"
       >
         <span class="mx-2">Gold Member</span>
@@ -81,12 +81,17 @@ export default {
     onSubmit() {
       // edit target factory
       if (this.type === 'edit') {
-        this.editFactory(this.form)
+        this.editFactory(this.formObj)
       } else {
         // create new factory
-        this.addNewFactory(this.form)
+        this.addNewFactory(this.formObj)
       }
       this.$bvModal.hide('input-modal')
+    },
+  },
+  computed: {
+    formObj() {
+      return this.form
     },
   },
 }
