@@ -15,7 +15,9 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav v-if="user.role === 'admin'">
         <b-nav-item
-          ><router-link to="/dashboard">Dashboard</router-link></b-nav-item
+          ><router-link to="/dashboard/factories"
+            >Dashboard</router-link
+          ></b-nav-item
         >
       </b-navbar-nav>
       <b-navbar-nav class="navbar__right">
