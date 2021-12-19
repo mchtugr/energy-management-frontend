@@ -101,6 +101,18 @@ export default new Vuex.Store({
         error: payload,
       }
     },
+
+    DELETE_UNIT_LOADING(state) {
+      state.factories.delete.loading = true
+    },
+    DELETE_UNIT_SUCCESS(state, payload) {
+      // remove target factory from state
+      state.units.list = state.units.list.filter((i) => i.id !== payload)
+      state.factories.delete = { loading: false, error: null }
+    },
+    DELETE_UNIT_ERROR(state, payload) {
+      state.factories.delete = { loading: false, error: payload }
+    },
   },
   actions: {
     // login user
@@ -198,6 +210,25 @@ export default new Vuex.Store({
           context.commit('FETCH_UNITS_SUCCESS', res.data.data)
         })
         .catch((err) => context.commit('FETCH_UNITS_ERROR', err.response.data))
+    },
+
+    // remove selected unit
+    removeUnit(context, { factory_id, unit_id }) {
+      context.commit('DELETE_UNIT_LOADING')
+
+      axios
+        .delete(
+          `http://localhost:3000/api/factories/${factory_id}/units/${unit_id}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then(() => {
+          context.commit('DELETE_UNIT_SUCCESS', unit_id)
+        })
+        .catch((err) => context.commit('DELETE_UNIT_ERROR', err.response.data))
     },
   },
   modules: {},
