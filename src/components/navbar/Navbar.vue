@@ -49,7 +49,7 @@ export default {
   computed: {
     ...mapState(['user']),
     showNavbar() {
-      return this.$route.name !== 'Login'
+      return this.$route.name !== 'Login' && this.$route.name !== 'Signup'
     },
   },
   mixins: [filters],
