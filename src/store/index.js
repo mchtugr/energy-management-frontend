@@ -23,9 +23,12 @@ export default new Vuex.Store({
     units: {
       list: [],
       get: { loading: false, error: null },
+      edit: { loading: false, error: null },
+      new: { loading: false, error: null },
     },
   },
   mutations: {
+    // LOGIN
     LOGIN_USER_LOADING(state) {
       state.user.loading = true
     },
@@ -35,6 +38,8 @@ export default new Vuex.Store({
     LOGIN_USER_ERROR(state, payload) {
       state.user = { ...state.user, loading: false, error: payload }
     },
+
+    // FETCH ALL FACTORIES
     FETCH_FACTORIES_LOADING(state) {
       state.factories.get.loading = true
     },
@@ -52,6 +57,8 @@ export default new Vuex.Store({
         error: payload,
       }
     },
+
+    // DELETE TARGET FACTORY
     DELETE_FACTORY_LOADING(state) {
       state.factories.delete.loading = true
     },
@@ -65,6 +72,8 @@ export default new Vuex.Store({
     DELETE_FACTORY_ERROR(state, payload) {
       state.factories.delete = { loading: false, error: payload }
     },
+
+    // EDIT TARGET FACTORY
     EDIT_FACTORY_LOADING(state) {
       state.factories.edit.loading = true
     },
@@ -74,6 +83,8 @@ export default new Vuex.Store({
     EDIT_FACTORY_ERROR(state, payload) {
       state.factories.edit = { loading: false, error: payload }
     },
+
+    // ADD NEW FACTORY
     ADD_FACTORY_LOADING(state) {
       state.factories.new.loading = true
     },
@@ -84,6 +95,8 @@ export default new Vuex.Store({
     ADD_FACTORY_ERROR(state, payload) {
       state.factories.new = { loading: false, error: payload }
     },
+
+    // FETCH ALL UNITS IN A FACTORY
     FETCH_UNITS_LOADING(state) {
       state.units.get.loading = true
     },
@@ -102,6 +115,7 @@ export default new Vuex.Store({
       }
     },
 
+    // DELETE A UNIT
     DELETE_UNIT_LOADING(state) {
       state.factories.delete.loading = true
     },
@@ -113,6 +127,8 @@ export default new Vuex.Store({
     DELETE_UNIT_ERROR(state, payload) {
       state.factories.delete = { loading: false, error: payload }
     },
+
+    // EDIT TARGET UNIT
     EDIT_UNIT_LOADING(state) {
       state.units.edit.loading = true
     },
@@ -121,6 +137,18 @@ export default new Vuex.Store({
     },
     EDIT_UNIT_ERROR(state, payload) {
       state.units.edit = { loading: false, error: payload }
+    },
+
+    // ADD NEW UNIT
+    ADD_UNIT_LOADING(state) {
+      state.units.new.loading = true
+    },
+    ADD_UNIT_SUCCESS(state, paylaod) {
+      state.units.list = [...state.units.list, paylaod]
+      state.units.new = { loading: false, error: null }
+    },
+    ADD_UNIT_ERROR(state, payload) {
+      state.units.new = { loading: false, error: payload }
     },
   },
   actions: {
@@ -257,6 +285,24 @@ export default new Vuex.Store({
           context.commit('EDIT_FACTORY_SUCCESS', unitObj.id)
         })
         .catch((err) => context.commit('EDIT_FACTORY_ERROR', err.response.data))
+    },
+    addNewUnit(context, unitObj) {
+      context.commit('ADD_UNIT_LOADING')
+
+      axios
+        .post(
+          `http://localhost:3000/api/factories/${unitObj.factory_id}/units`,
+          unitObj,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then(() => {
+          context.commit('ADD_UNIT_SUCCESS', unitObj)
+        })
+        .catch((err) => context.commit('ADD_UNIT_ERROR', err.response.data))
     },
   },
   modules: {},
