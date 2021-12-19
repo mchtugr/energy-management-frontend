@@ -84,6 +84,23 @@ export default new Vuex.Store({
     ADD_FACTORY_ERROR(state, payload) {
       state.factories.new = { loading: false, error: payload }
     },
+    FETCH_UNITS_LOADING(state) {
+      state.units.get.loading = true
+    },
+    FETCH_UNITS_SUCCESS(state, payload) {
+      state.units.list = payload
+      state.units.get = {
+        loading: false,
+        error: null,
+      }
+    },
+    FETCH_UNITS_ERROR(state, payload) {
+      state.units.get = {
+        ...state.units.get,
+        loading: false,
+        error: payload,
+      }
+    },
   },
   actions: {
     // login user
@@ -168,6 +185,19 @@ export default new Vuex.Store({
           context.commit('ADD_FACTORY_SUCCESS', factoryObj)
         })
         .catch((err) => context.commit('ADD_FACTORY_ERROR', err.response.data))
+    },
+    fetchUnitList(context, factory_id) {
+      context.commit('FETCH_UNITS_LOADING')
+      axios
+        .get(`http://localhost:3000/api/factories/${factory_id}/units`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((res) => {
+          context.commit('FETCH_UNITS_SUCCESS', res.data.data)
+        })
+        .catch((err) => context.commit('FETCH_UNITS_ERROR', err.response.data))
     },
   },
   modules: {},
