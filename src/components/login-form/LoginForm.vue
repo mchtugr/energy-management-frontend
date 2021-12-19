@@ -35,14 +35,27 @@
         ></b-form-input>
       </b-form-group>
     </b-row>
-    <div v-if="user.error" class="text-danger m-2 text-start">
+    <b-row>
+      <b-form-checkbox
+        name="remember"
+        v-model="rememberUser"
+        class="my-2 text-start"
+      >
+        <span class="mx-2">Remember Me?</span>
+      </b-form-checkbox>
+    </b-row>
+    <div v-if="user.error" class="text-danger mt-t2 text-start">
       * {{ user.error }}
     </div>
-    <div class="mt-3">
+    <div class="mt-2">
       <b-button variant="outline-primary" type="submit">
         {{ user.loading ? 'Logging in...' : 'Login' }}
         <b-spinner small v-if="user.loading"></b-spinner>
       </b-button>
+    </div>
+    <div class="mt-3 text-left d-flex">
+      <span>Don't have an account?</span>
+      <router-link to="/signup" class="mx-2 text-primary">Sign Up</router-link>
     </div>
   </form>
 </template>
@@ -55,6 +68,7 @@ export default {
     return {
       email: '',
       password: '',
+      rememberUser: true,
     }
   },
   computed: {
