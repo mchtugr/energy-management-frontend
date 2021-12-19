@@ -19,7 +19,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   margin: auto;
 }
 </style>
