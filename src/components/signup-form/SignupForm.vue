@@ -1,10 +1,10 @@
 <template>
   <form class="signup-form bg-light" @submit.prevent="signupUser">
-    <h3 class="mb-3">Sign Up</h3>
+    <h3 class="mb-3">{{$t("Sign Up")}}</h3>
     <!-- NAME -->
     <b-row>
       <b-form-group
-        label="Name"
+        :label="$t('Name')"
         label-for="name"
         :invalid-feedback="invalidName"
         :state="isValidName"
@@ -22,7 +22,7 @@
     <!-- EMAIL -->
     <b-row>
       <b-form-group
-        label="Email"
+        :label="$t('Email')"
         label-for="email"
         :invalid-feedback="invalidEmail"
         :state="isValidEmail"
@@ -40,7 +40,7 @@
     <!-- PAASSWORD -->
     <b-row>
       <b-form-group
-        label="Password"
+        :label="$t('Password')"
         label-for="password"
         :invalid-feedback="invalidPassword"
         :state="isValidPassword"
@@ -57,7 +57,7 @@
     </b-row>
     <!-- ROLE -->
     <b-row>
-      <b-form-group label="Role" class="text-start">
+      <b-form-group :label="$t('Role')" class="text-start">
         <b-form-select v-model="role" class="py-2 w-100">
           <b-form-select-option value="admin">Admin</b-form-select-option>
           <b-form-select-option value="editor">Editor</b-form-select-option>
@@ -72,11 +72,11 @@
       :disabled="disabled"
     >
       <b-spinner small v-if="signup.loading"></b-spinner>
-      <span v-else>Signup</span>
+      <span v-else>{{$t("Sign Up")}}</span>
     </b-button>
     <div class="mt-3 text-left d-flex">
-      <span>Already have an account?</span>
-      <router-link to="/login" class="mx-2 text-primary">Login</router-link>
+      <span>{{$t("Already have an account?")}}</span>
+      <router-link to="/login" class="mx-2 text-primary">{{$t("Sign In")}}</router-link>
     </div>
   </form>
 </template>
