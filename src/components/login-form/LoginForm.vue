@@ -1,9 +1,9 @@
 <template>
   <form class="login-form bg-light" @submit.prevent="loginUser">
-    <h3 class="mb-3">Sign In</h3>
+    <h3 class="mb-3">{{$t("Sign In")}}</h3>
     <b-row>
       <b-form-group
-        label="Email"
+        :label="$t('Email')"
         label-for="email"
         :invalid-feedback="invalidEmail"
         :state="isValidEmail"
@@ -20,7 +20,7 @@
     </b-row>
     <b-row>
       <b-form-group
-        label="Password"
+        :label="$t('Password')"
         label-for="password"
         :invalid-feedback="invalidPassword"
         :state="isValidPassword"
@@ -41,7 +41,7 @@
         v-model="rememberUser"
         class="my-2 text-start"
       >
-        <span class="mx-2">Remember Me?</span>
+        <span class="mx-2">{{$t("Remember me?")}}</span>
       </b-form-checkbox>
     </b-row>
     <div v-if="user.error" class="text-danger mt-t2 text-start">
@@ -49,13 +49,13 @@
     </div>
     <div class="mt-2">
       <b-button variant="outline-primary" type="submit">
-        {{ user.loading ? 'Logging in...' : 'Login' }}
+        {{ user.loading ? $t('Signing In...') : $t('Sign In') }}
         <b-spinner small v-if="user.loading"></b-spinner>
       </b-button>
     </div>
     <div class="mt-3 text-left d-flex">
-      <span>Don't have an account?</span>
-      <router-link to="/signup" class="mx-2 text-primary">Sign Up</router-link>
+      <span>{{$t("Don't have an account?")}}</span>
+      <router-link to="/signup" class="mx-2 text-primary">{{$t("Sign Up")}}</router-link>
     </div>
   </form>
 </template>
