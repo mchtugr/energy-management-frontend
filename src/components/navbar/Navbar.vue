@@ -16,12 +16,12 @@
       <b-navbar-nav v-if="user.role === 'admin'">
         <b-nav-item
           ><router-link to="/dashboard/factories"
-            >Dashboard</router-link
+            >{{$t('Dashboard')}}</router-link
           ></b-nav-item
         >
       </b-navbar-nav>
       <b-navbar-nav class="navbar__right">
-        <b-nav-item-dropdown text="Lang" right class="dropdown-menu-end">
+        <b-nav-item-dropdown :text="$t('Lang')" right class="dropdown-menu-end">
           <b-dropdown-item>EN</b-dropdown-item>
           <b-dropdown-item>TR</b-dropdown-item>
         </b-nav-item-dropdown>
@@ -30,11 +30,11 @@
           right
           v-if="user.name"
         >
-          <b-dropdown-item>Profile</b-dropdown-item>
-          <b-dropdown-item>Logout</b-dropdown-item>
+          <b-dropdown-item>{{$t('Profile')}}</b-dropdown-item>
+          <b-dropdown-item>{{$t('Sign Out')}}</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item v-else>
-          <router-link to="/login">Login</router-link>
+          <router-link to="/login">{{$t('Sign In')}}</router-link>
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>

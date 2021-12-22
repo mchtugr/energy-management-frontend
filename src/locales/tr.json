@@ -8,5 +8,12 @@
     "Sign Up": "Kaydol",
     "Name": "İsim",
     "Role": "Rol",
-    "Already have an account?": "Zaten hesabınız var mı?"
+    "Already have an account?": "Zaten hesabınız var mı?",
+    "Lang": "Dil",
+    "Profile": "Profil",
+    "Sign Out": "Çıkış Yap",
+    "Dashboard": "Yönetim Paneli"
+
+
+
 }
