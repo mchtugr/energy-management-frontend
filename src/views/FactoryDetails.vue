@@ -21,7 +21,7 @@
           </template>
         </b-table>
         <b-btn class="bg-success my-3" @click="showCreateModal"
-          >Create New Factory</b-btn
+          >{{$t('Create New Factory')}}</b-btn
         >
       </b-col>
     </b-row>
@@ -58,11 +58,12 @@ export default {
       fields: [
         {
           key: 'name',
-          label: 'Name',
+          label: this.$i18n.t("Name"),
           sortable: true,
         },
         {
           key: 'membership_date',
+          label: this.$i18n.t("Membership Date"),
           sortable: true,
           sortByFormatted: true,
           formatter: (val) => {
@@ -71,6 +72,7 @@ export default {
         },
         {
           key: 'membership_due',
+          label: this.$i18n.t("Membership Due"),
           sortable: true,
           sortByFormatted: true,
           formatter: (val) => {
@@ -79,10 +81,12 @@ export default {
         },
         {
           key: 'company_size',
+          label: this.$i18n.t("Company Size"),
           sortable: true,
         },
         {
           key: 'gold_member',
+          label: this.$i18n.t("Gold Member"),
           sortable: true,
         },
         { key: 'edit', label: '' },

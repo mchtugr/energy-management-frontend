@@ -14,5 +14,11 @@
     "Sign Out": "Sign Out",
     "Dashboard": "Dashboard",
     "Factory List": "Factory List",
-    "Factory Units": "Factory Units"
+    "Factory Units": "Factory Units",
+    "Membership Date": "Membership Date",
+    "Membership Due": "Membership Due",
+    "Company Size": "Company Size",
+    "Gold Member":"Gold Member",
+    "Create New Factory": "Create New Factory"
+
 }
