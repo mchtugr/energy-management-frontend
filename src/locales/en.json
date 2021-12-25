@@ -19,6 +19,13 @@
     "Membership Due": "Membership Due",
     "Company Size": "Company Size",
     "Gold Member":"Gold Member",
-    "Create New Factory": "Create New Factory"
+    "Create New Factory": "Create New Factory",
+    "Please select a factory to display units!": "Please select a factory to display units!",
+    "Create New Unit": "Create New Unit",
+    "Unit Name": "Unit Name",
+    "Period Start": "Period Start",
+    "Period End": "Period End",
+    "Usage kWh": "Usage kWh",
+    "Total Amount $": "Total Amount $"
 
 }

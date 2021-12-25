@@ -11,7 +11,7 @@
           <!-- factory select -->
           <b-form-select v-model="selectedFactoryId">
             <b-form-select-option :value="null" disabled
-              >Please select a factory to display units</b-form-select-option
+              >{{ $t('Please select a factory to display units!') }}</b-form-select-option
             >
             <b-form-select-option
               v-for="factory in factories.list"
@@ -37,7 +37,7 @@
           </b-table>
           <!-- NEW UNIT BTN -->
           <b-btn class="bg-success my-3" @click="showCreateModal"
-            >Create New Unit</b-btn
+            >{{$t('Create New Unit')}}</b-btn
           >
         </b-container>
       </b-col>
@@ -77,30 +77,30 @@ export default {
       fields: [
         {
           key: 'unit_name',
-          label: 'Unit Name',
+          label: this.$i18n.t('Unit Name'),
           sortable: true,
         },
         {
           key: 'date_start',
-          label: 'Period Start',
+          label: this.$i18n.t('Period Start'),
 
           sortable: true,
           sortByFormatted: true,
         },
         {
           key: 'date_end',
-          label: 'Period End',
+          label: this.$i18n.t('Period End'),
           sortable: true,
           sortByFormatted: true,
         },
         {
           key: 'usage',
-          label: 'Usage kWh',
+          label: this.$i18n.t('Usage kWh'),
           sortable: true,
         },
         {
           key: 'usage_fee',
-          label: 'Total Amount $',
+          label: this.$i18n.t('Total Amount $'),
           sortable: true,
         },
         {

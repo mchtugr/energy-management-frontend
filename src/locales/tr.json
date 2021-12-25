@@ -19,7 +19,16 @@
     "Membership Due": "Üyelik Bitiş",
     "Company Size": "Çalışan Sayısı",
     "Gold Member":"Ayrıcalık",
-    "Create New Factory": "Yeni Fabrika Oluştur"
+    "Create New Factory": "Yeni Fabrika Oluştur",
+    "Please select a factory to display units!": "Lütfen bölümleri görebilmek için fabrika seçiniz!",
+    "Create New Unit": "Yeni Bölüm Oluştur",
+    "Unit Name": "Bölüm Adı",
+    "Period Start": "Dönem Başlangıcı",
+    "Period End": "Dönem Sonu",
+    "Usage kWh": "Kullanım Miktarı kWh",
+    "Total Amount $": "Toplam Tutar $"
+
+
 
 
 
