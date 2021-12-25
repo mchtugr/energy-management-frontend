@@ -34,7 +34,18 @@
     "Company name:": "Company name:",
     "Enter Company Name": "Enter Company Name",
     "Enter Company Size": "Enter Company Size",
-    "No Date Selected": "No Date Selected"
+    "No Date Selected": "No Date Selected",
+    "Unit Name:": "Unit name:",
+    "Enter Unit Name": "Enter Unit name:",
+    "Start Date": "Start Date",
+    "End Date": "End Date",
+    "Total Usage": "Total Usage",
+    "Enter Total Usage": "Enter Total Usage Amount",
+    "Total Fee": "Total Fee",
+    "Enter Total Fee": "Enter Total Fee Amount",
+    "Discounted Price": "Discounted Price"
+
+
 
 
 }

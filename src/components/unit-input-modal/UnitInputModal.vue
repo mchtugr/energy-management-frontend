@@ -9,11 +9,11 @@
       <!-- UNIT NAME -->
       <b-row>
         <b-col>
-          <b-form-group label="Unit name:" label-for="unit" class="mb-2">
+          <b-form-group :label="$t('Unit Name:')" label-for="unit" class="mb-2">
             <b-form-input
               type="text"
               v-model="formObj.unit_name"
-              placeholder="Enter Unit Name"
+              :placeholder="$t('Enter Unit Name')"
               required
             ></b-form-input>
           </b-form-group>
@@ -22,33 +22,33 @@
       <!-- START & END Dates Row-->
       <b-row>
         <b-col>
-          <b-form-group class="mb-2" label="Start Date">
-            <b-form-datepicker v-model="formObj.date_start" required />
+          <b-form-group class="mb-2" :label="$t('Start Date')">
+            <b-form-datepicker v-model="formObj.date_start" required :placeholder="$t('No Date Selected')"/>
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group class="mb-2" label="End Date">
-            <b-form-datepicker v-model="formObj.date_end" required />
+          <b-form-group class="mb-2" :label="$t('End Date')">
+            <b-form-datepicker v-model="formObj.date_end" required :placeholder="$t('No Date Selected')"/>
           </b-form-group>
         </b-col>
       </b-row>
       <b-row>
         <b-col>
-          <b-form-group class="mb-2" label="Total Usage">
+          <b-form-group class="mb-2" :label="$t('Total Usage')">
             <b-form-input
               type="number"
               v-model="formObj.usage"
-              placeholder="Enter Total Usage Amount"
+              :placeholder="$t('Enter Total Usage Amount')"
               required
             ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group class="mb-2" label="Total Fee">
+          <b-form-group class="mb-2" :label="$t('Total Fee')">
             <b-form-input
               type="number"
               v-model="formObj.usage_fee"
-              placeholder="Enter Total Fee Amount"
+              :placeholder="$t('Enter Total Fee Amount')"
               required
             ></b-form-input>
           </b-form-group>
@@ -57,11 +57,11 @@
 
       <!-- CheckBox -->
       <b-form-checkbox
-        name="gold-member"
+        name="hasDiscount"
         v-model="formObj.discount"
         class="mb-2"
       >
-        <span class="mx-2">Discounted Price</span>
+        <span class="mx-2">{{$t('Discounted Price')}}</span>
       </b-form-checkbox>
       <div class="d-flex justify-content-center">
         <b-button type="submit" variant="primary" class="mt-2 px-4">

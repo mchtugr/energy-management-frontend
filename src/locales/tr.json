@@ -34,7 +34,17 @@
     "Company name:": "Şirked adı:",
     "Enter Company Name": "Şirket adı giriniz",
     "Enter Company Size": "Çalışan sayısı giriniz",
-    "No Date Selected": "Herhangi bir tarih seçilmedi"
+    "No Date Selected": "Herhangi bir tarih seçilmedi",
+    "Unit Name:": "Bölüm Adı:",
+    "Enter Unit Name": "Bölüm Adı Giriniz",
+    "Start Date": "Başlangıç Tarihi",
+    "End Date": "Bitiş Tarihi",
+    "Total Usage": "Kullanım Miktarı",
+    "Enter Total Usage Amount": "Kullanım Miktarını Giriniz",
+    "Total Fee": "Toplam Tutar",
+    "Enter Total Fee Amount": "Toplam Tutarı Giriniz",
+    "Discounted Price": "İndirimli Fiyat"
+
 
 
 
