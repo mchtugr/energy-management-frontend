@@ -9,25 +9,25 @@
       <!-- NAME & SIZE ROW -->
       <b-row>
         <b-col>
-          <b-form-group label="Company name:" label-for="company" class="mb-2">
+          <b-form-group :label="$t('Company name:')" label-for="company" class="mb-2">
             <b-form-input
               type="text"
               v-model="formObj.name"
-              placeholder="Enter Company Name"
+              :placeholder="$t('Enter Company Name')"
               required
             ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col>
           <b-form-group
-            label="Company Size"
+            :label="$t('Company Size')"
             label-for="company-size"
             class="mb-2"
           >
             <b-form-input
               id="company-size"
               type="number"
-              placeholder="Enter Company Size"
+              :placeholder="$t('Enter Company Size')"
               v-model="formObj.company_size"
               required
             ></b-form-input>
@@ -37,13 +37,13 @@
       <!-- Memebership & Due Dates Row-->
       <b-row>
         <b-col>
-          <b-form-group class="mb-2" label="Membership Date">
-            <b-form-datepicker v-model="formObj.membership_date" required />
+          <b-form-group class="mb-2" :label="$t('Membership Date')">
+            <b-form-datepicker v-model="formObj.membership_date" required :placeholder="$t('No Date Selected')"/>
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group class="mb-2" label="Membership Due">
-            <b-form-datepicker v-model="formObj.membership_due" required />
+          <b-form-group class="mb-2" :label="$t('Membership Due')">
+            <b-form-datepicker v-model="formObj.membership_due" required :placeholder="$t('No Date Selected')"/>
           </b-form-group>
         </b-col>
       </b-row>
@@ -54,7 +54,7 @@
         v-model="formObj.gold_member"
         class="mb-2"
       >
-        <span class="mx-2">Gold Member</span>
+        <span class="mx-2">{{$t('Gold Member')}}</span>
       </b-form-checkbox>
       <div class="d-flex justify-content-center">
         <b-button type="submit" variant="primary" class="mt-2 px-4">

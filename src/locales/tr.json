@@ -18,7 +18,7 @@
     "Membership Date": "Üyelik Başlangıç",
     "Membership Due": "Üyelik Bitiş",
     "Company Size": "Çalışan Sayısı",
-    "Gold Member":"Ayrıcalık",
+    "Gold Member":"Ayrıcalıklı Üyelik",
     "Create New Factory": "Yeni Fabrika Oluştur",
     "Please select a factory to display units!": "Lütfen bölümleri görebilmek için fabrika seçiniz!",
     "Create New Unit": "Yeni Bölüm Oluştur",
@@ -30,7 +30,14 @@
     "Are you really sure to delete factory?": "{factory} fabrikasını silmek istediğinizden emin misiniz ?",
     "Are you really sure to delete unit?": "{unit} bölümünü silmek istediğinizden emin misiniz ?",
     "Yes, I'm Sure": "Evet, Eminim",
-    "Cancel":"İptal Et"
+    "Cancel":"İptal Et",
+    "Company name:": "Şirked adı:",
+    "Enter Company Name": "Şirket adı giriniz",
+    "Enter Company Size": "Çalışan sayısı giriniz",
+    "No Date Selected": "Herhangi bir tarih seçilmedi"
+
+
+
 
 
 

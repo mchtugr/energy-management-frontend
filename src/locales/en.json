@@ -30,6 +30,11 @@
     "Are you really sure to delete factory?": "Are you really sure to delete {factory} ?",
     "Are you really sure to delete unit?": "Are you really sure to delete { unit } Unit ?",
     "Yes, I'm Sure": "Yes, I'm Sure",
-    "Cancel":"Cancel"
+    "Cancel":"Cancel",
+    "Company name:": "Company name:",
+    "Enter Company Name": "Enter Company Name",
+    "Enter Company Size": "Enter Company Size",
+    "No Date Selected": "No Date Selected"
+
 
 }
