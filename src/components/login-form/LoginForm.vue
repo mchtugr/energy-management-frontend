@@ -94,7 +94,7 @@ export default {
 
     loginUser() {
       // login user action
-      this.login({ email: this.email, password: this.password })
+      this.login({ email: this.email, password: this.password, rememberUser: this.rememberUser })
     },
   },
   updated() {

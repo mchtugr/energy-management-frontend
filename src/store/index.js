@@ -10,7 +10,7 @@ export default new Vuex.Store({
       loading: false,
       name: null,
       role: null,
-      token: null,
+      token: window.localStorage.getItem('userToken') ,
       error: null,
     },
     signup: {
@@ -39,6 +39,7 @@ export default new Vuex.Store({
     },
     LOGIN_USER_SUCCESS(state, payload) {
       state.user = { ...payload, loading: false, error: null }
+      localStorage.setItem('userToken', payload.token)
     },
     LOGIN_USER_ERROR(state, payload) {
       state.user = { ...state.user, loading: false, error: payload }
