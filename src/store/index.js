@@ -8,9 +8,9 @@ export default new Vuex.Store({
   state: {
     user: {
       loading: false,
-      name: null,
-      role: null,
-      token: window.localStorage.getItem('userToken') ,
+      name: JSON.parse(window.localStorage.getItem('user'))?.name,
+      role: JSON.parse(window.localStorage.getItem('user'))?.role,
+      token: JSON.parse(window.localStorage.getItem('user'))?.token ,
       error: null,
     },
     signup: {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
     LOGIN_USER_SUCCESS(state, payload) {
       state.user = { ...payload, loading: false, error: null }
-      localStorage.setItem('userToken', payload.token)
+      localStorage.setItem('user', JSON.stringify(payload))
     },
     LOGIN_USER_ERROR(state, payload) {
       state.user = { ...state.user, loading: false, error: payload }
@@ -54,6 +54,11 @@ export default new Vuex.Store({
     },
     SIGNUP_USER_ERROR(state, payload) {
       state.signup = { loading: false, error: payload }
+    },
+
+    // SIGNOUT
+    SIGNOUT(state) {
+      state.token
     },
 
     // FETCH ALL FACTORIES
