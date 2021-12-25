@@ -26,7 +26,11 @@
     "Period Start": "Dönem Başlangıcı",
     "Period End": "Dönem Sonu",
     "Usage kWh": "Kullanım Miktarı kWh",
-    "Total Amount $": "Toplam Tutar $"
+    "Total Amount $": "Toplam Tutar $",
+    "Are you really sure to delete factory?": "{factory} fabrikasını silmek istediğinizden emin misiniz ?",
+    "Are you really sure to delete unit?": "{unit} bölümünü silmek istediğinizden emin misiniz ?",
+    "Yes, I'm Sure": "Evet, Eminim",
+    "Cancel":"İptal Et"
 
 
 

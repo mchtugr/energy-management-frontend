@@ -1,17 +1,17 @@
 <template>
   <b-modal size="md" hide-footer v-bind="$attrs">
     <h4 class="text-center my-3" v-if="target === 'factory'">
-      Are you really sure to delete "{{ form.name }}" ?
+      {{$t('Are you really sure to delete factory?', {factory: form.name}) }}
     </h4>
     <h4 class="text-center my-3" v-else>
-      Are you really sure to delete "{{ form.unit_name }}" Unit?
+      {{$t('Are you really sure to delete unit?', {unit: form.unit_name}) }}
     </h4>
     <div class="d-flex justify-content-center mt-4">
       <b-btn variant="danger" class="mx-2" @click="removeRow"
-        >Yes, I'm Sure</b-btn
+        >{{$t("Yes, I'm Sure")}}</b-btn
       >
       <b-btn variant="outline-primary" class="mx-2" @click="hideDeleteModal"
-        >Cancel
+        >{{$t('Cancel')}}
       </b-btn>
     </div>
   </b-modal>
