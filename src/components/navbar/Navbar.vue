@@ -21,9 +21,9 @@
         >
       </b-navbar-nav>
       <b-navbar-nav class="navbar__right">
-        <b-nav-item-dropdown :text="$t('Lang')" right class="dropdown-menu-end">
-          <b-dropdown-item>EN</b-dropdown-item>
-          <b-dropdown-item>TR</b-dropdown-item>
+        <b-nav-item-dropdown :text="$i18n.locale.toUpperCase()" right class="dropdown-menu-end">
+          <b-dropdown-item @click="$i18n.locale = 'en'">EN</b-dropdown-item>
+          <b-dropdown-item @click="$i18n.locale = 'tr'">TR</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
           :text="user.name | capitalize"
@@ -46,6 +46,11 @@ import { mapState } from 'vuex'
 import filters from '../../mixins/filters'
 export default {
   name: 'Navbar',
+  data(){
+    return {
+    langs: ['tr', 'en']
+    }
+  },
   computed: {
     ...mapState(['user']),
     showNavbar() {
