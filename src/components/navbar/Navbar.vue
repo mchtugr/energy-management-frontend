@@ -31,7 +31,7 @@
           v-if="user.name"
         >
           <b-dropdown-item>{{$t('Profile')}}</b-dropdown-item>
-          <b-dropdown-item>{{$t('Sign Out')}}</b-dropdown-item>
+          <b-dropdown-item @click='signout'>{{$t('Sign Out')}}</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item v-else>
           <router-link to="/login">{{$t('Sign In')}}</router-link>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import filters from '../../mixins/filters'
 export default {
   name: 'Navbar',
@@ -56,6 +56,9 @@ export default {
     showNavbar() {
       return this.$route.name !== 'Login' && this.$route.name !== 'Signup'
     },
+  },
+  methods: {
+    ...mapActions(['signout'])
   },
   mixins: [filters],
 }

@@ -58,7 +58,10 @@ export default new Vuex.Store({
 
     // SIGNOUT
     SIGNOUT(state) {
-      state.token
+      state.user.name = null
+      state.user.role = null
+      state.user.token = null
+      localStorage.removeItem('user')
     },
 
     // FETCH ALL FACTORIES
@@ -202,6 +205,11 @@ export default new Vuex.Store({
           context.commit('SIGNUP_USER_SUCCESS', res.data)
         })
         .catch((err) => context.commit('SIGNUP_USER_ERROR', err.response.data))
+    },
+
+    // signout user 
+    signout({commit}) {
+      commit('SIGNOUT')
     },
 
     // fetch all factories
