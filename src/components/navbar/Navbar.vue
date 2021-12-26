@@ -31,7 +31,7 @@
           v-if="user.name"
         >
           <b-dropdown-item>{{$t('Profile')}}</b-dropdown-item>
-          <b-dropdown-item @click='signout'>{{$t('Sign Out')}}</b-dropdown-item>
+          <b-dropdown-item @click='handleSignout'>{{$t('Sign Out')}}</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item v-else>
           <router-link to="/login">{{$t('Sign In')}}</router-link>
@@ -58,7 +58,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['signout'])
+    ...mapActions(['signout']),
+    handleSignout() {
+      this.signout()
+      this.$router.push('/login')
+    }
   },
   mixins: [filters],
 }
