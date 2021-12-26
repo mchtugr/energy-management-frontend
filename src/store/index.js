@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     user: {
       loading: false,
-      name: JSON.parse(window.localStorage.getItem('user'))?.name,
+      name: JSON.parse(window.localStorage.getItem('user'))?.name ,
       role: JSON.parse(window.localStorage.getItem('user'))?.role,
       token: JSON.parse(window.localStorage.getItem('user'))?.token ,
       error: null,
@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
     LOGIN_USER_SUCCESS(state, payload) {
       state.user = { ...payload, loading: false, error: null }
-      localStorage.setItem('user', JSON.stringify(payload))
+      window.localStorage.setItem('user', JSON.stringify(payload))
     },
     LOGIN_USER_ERROR(state, payload) {
       state.user = { ...state.user, loading: false, error: payload }
@@ -61,7 +61,7 @@ export default new Vuex.Store({
       state.user.name = null
       state.user.role = null
       state.user.token = null
-      localStorage.removeItem('user')
+      window.localStorage.removeItem('user')
     },
 
     // FETCH ALL FACTORIES

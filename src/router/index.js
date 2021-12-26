@@ -42,12 +42,18 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   let userIsLogged = store.state.user.token
-  if (to.name === 'Login' || to.name === 'Signup' && userIsLogged) {
+  if ( to.name === 'FactoryDetails' && !userIsLogged) {
     // Redirect user to homepage
-    return next('/')
+    return next('/login')
     
-  } else {
+  } else if (to.name === 'UnitDetails' && !userIsLogged){
     // Let the user pass
+    return next('/login')
+  } else if(to.name === 'Login' && userIsLogged) {
+    return next('/')
+  } else if(to.name === 'Signup' && userIsLogged) {
+    return next('/')
+  } else {
     return next()
   }
 })
