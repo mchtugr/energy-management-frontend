@@ -42,9 +42,10 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   let userIsLogged = store.state.user.token
-  if (to.name === 'Login' && userIsLogged) {
+  if (to.name === 'Login' || to.name === 'Signup' && userIsLogged) {
     // Redirect user to homepage
     return next('/')
+    
   } else {
     // Let the user pass
     return next()
